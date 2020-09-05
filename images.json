@@ -1,0 +1,32 @@
+[
+    {
+        "name": "La Concha",
+        "fileImage":"beach1.jpeg",
+        "review":"Du khách đến biển La Concha có thể bơi ra đảo. Ở đó có bãi biển nhỏ, ngọn hải đăng, nhà hàng với bàn ăn ngoài trời và quán bar xinh xắn."
+    },
+    {
+        "name": "Grace Bay",
+        "fileImage":"beach2.jpeg",
+        "review": "Năm ngoái Grace Bay ở quốc gia Caribbean thuộc Thổ Nhĩ Kỳ và Caicos được mệnh danh là bãi biển đẹp nhất thế giới nhưng năm nay nó đã tụt xuống vị trí thứ năm trong bảng xếp hạng"
+    },
+    {
+        "name": "Clearwater",
+        "fileImage":"beach3.jpeg",
+        "review": "Nó được biết đến với bãi cát trắng mềm mại trải dài và vùng nước phẳng lặng. Trên TripAdvisor, 73% độc giả đánh giá bãi biển này là “tuyệt vời”."
+    },
+    {
+        "name": "Seven Mile",
+        "fileImage":"beach4.jpeg",
+        "review": "Seven Mile là một bãi biển cát hình lưỡi liềm dài ở phía tây của đảo Grand Cayman. Nó được coi là 'bãi biển tốt nhất vùng Caribbean'. Ở đây có rất nhiều bãi biển khác nhau, tất cả đều là một phần của bãi biển dài hơn 10km."
+    },
+    {
+        "name": "Ses de Ses",
+        "fileImage":"beach5.jpeg",
+        "review": "Vị trí của nó ở Tây Ban Nha có thể so sánh với một bãi biển ở Caribbean. Nó được du khách coi là thiên đươgnf trên trái đất và là nơi hoàn hảo cho kỳ nghỉ cuối tuần."
+    },
+    {
+        "name": "Maldives",
+        "fileImage":"beach6.jpeg",
+        "review": "Chuyến du lịch đến Maldives có thể xem là điểm đến trong mơ của rất nhiều người, vừa là thiên đường biển đảo, vừa chanh sả lại lãng mạn vô đối."
+    }
+]
