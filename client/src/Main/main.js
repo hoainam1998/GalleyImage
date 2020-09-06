@@ -7,32 +7,14 @@ import MobileView from '../MobileImageView/mobileImageView';
 
 function Main() {
 
-    const [listData, setData] = useState(null);
+    const [listData, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [image, setImage] = useState(undefined)
 
     useEffect(() => {
-        $('#darkmode').change(function () {
-            if (this.checked) {
-                $('body').css('background', '#1e272e');
-                $(`.${style.title}`).css('color', 'white');
-                $(`.${style.btn_option}`).css('color', 'white');
-            } else {
-                $('body').css('background', '');
-                $(`.${style.title}`).removeAttr('style');
-                $(`.${style.btn_option}`).removeAttr('style');
-            }
-        })
-
-        $(`.${style.btn_option}`).click(function () {
-            $('#dashboard').show(function () {
-                $('body').css('overflow', 'hidden');
-            });
-        })
-
         axios.get('/api/getData')
-        .then(function (data) {
-            localStorage.setItem('images', JSON.stringify(data));
+        .then(function (images) {
+            localStorage.setItem('images', JSON.stringify(images.data));
             setData(JSON.parse(localStorage.getItem('images')));
             setLoading(false);
         })
@@ -49,6 +31,25 @@ function Main() {
         $(`.click`).click(function () {
             let id = $(this).data('id');
             setImage(getSpecificImage(id));
+        })
+
+        $('#darkmode').change(function () {
+            if (this.checked) {
+                $('body').css('background', '#1e272e');
+                $(`.${style.title}`).css('color', 'white');
+                $(`.${style.btn_option}`).css('color', 'white');
+            } else {
+                $('body').css('background', '');
+                $(`.${style.title}`).removeAttr('style');
+                $(`.${style.btn_option}`).removeAttr('style');
+            }
+        })
+
+        $(`.${style.btn_option}`).click(function () {
+            console.log('show');
+            $('#dashboard').show(function () {
+                $('body').css('overflow', 'hidden');
+            });
         })
     }, [loading])
 

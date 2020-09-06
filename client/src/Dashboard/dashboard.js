@@ -32,8 +32,8 @@ function Dashboard() {
 
     useEffect(() => {
         axios.get('/api/getData')
-        .then( function (data) {
-            localStorage.setItem('images', JSON.stringify(data));
+        .then( function (images) {
+            localStorage.setItem('images', JSON.stringify(images.data));
             setImages(JSON.parse(localStorage.getItem('images')));
             setLoading(false)
         })
