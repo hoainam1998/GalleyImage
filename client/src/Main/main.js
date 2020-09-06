@@ -51,7 +51,7 @@ function Main() {
         return JSON.parse(localStorage.getItem('images')).find(item => item._id === id);
     }
 
-    if(listData.length===0){
+    if(listData.length===0||listData===undefined){
         return (<h1>Loading...</h1>)
     }
     return (
