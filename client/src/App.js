@@ -7,7 +7,7 @@ import './App.css';
     return (
       <div className="layout">
         <Main/>
-        <Dashboard/>
+        <Dashboard/> 
       </div>
     );
   }

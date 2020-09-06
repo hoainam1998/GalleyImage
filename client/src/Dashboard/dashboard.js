@@ -159,7 +159,7 @@ function Dashboard() {
             <ul className={style.listItemImage}>
                 {images.map((item, index) => (
                     <li key={index + 1} className={style.itemImage} data-id={item._id}>
-                        <img src={require(`../images/${item.fileImage}`)} alt="beach"></img>
+                        <img src={`data:${item.fileImage.imgContentType};base64,${item.fileImage.imgData}`} alt="beach"></img>
                         <span className={style.imgName}>{item.name}</span>
                     </li>
                 ))}
@@ -209,7 +209,7 @@ export function View({ item }) {
                 </div>
                 <div>
                     <span>Image:</span>
-                    <img src={require(`../images/${item.fileImage}`)} alt="img"></img>
+                    <img src={`data:${item.fileImage.imgContentType};base64,${item.fileImage.imgData}`} alt="img"></img>
                 </div>
                 <div>
                     <span>Intro:</span>
@@ -260,7 +260,7 @@ export function Form({ item }) {
                 </div>
                 <div>
                     <label></label>
-                    <img src={require(`../images/${item.fileImage}`)} className={style.img} alt="img"></img>
+                    <img src={`data:${item.fileImage.imgContentType};base64,${item.fileImage.imgData}`} className={style.img} alt="img"></img>
                 </div>
                 <div className={style.introImg}>
                     <label>Intro image: </label>
@@ -272,7 +272,6 @@ export function Form({ item }) {
     } else {
         return (<h1>undefined</h1>)
     }
-
 }
 
 export default React.memo(Dashboard);

@@ -6,8 +6,8 @@ const ImageSchema=new mongoose.Schema({
         required: true
     },
     fileImage:{
-        type: String,
-        required: true
+        data: Buffer,
+        contentType: String
     },
     review:{
         type: String,

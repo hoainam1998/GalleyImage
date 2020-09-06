@@ -68,7 +68,7 @@ function Main() {
             Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
             <ul className={style.listImages}>
                 {listData.map((item, index) => (
-                    <li key={index + 1} data-id={item._id} className={`${style.itemImage} click`}><img src={require(`../images/${item.fileImage}`)} alt="img"></img></li>
+                    <li key={index + 1} data-id={item._id} className={`${style.itemImage} click`}><img src={`data:${item.fileImage.imgContentType};base64,${item.fileImage.imgData}`} alt="img"></img></li>
                 ))}
             </ul>
             <button className={style.btn_option}><i className="fas fa-ellipsis-v"></i></button>

@@ -36,14 +36,41 @@ function checkFileType(file, cb) {
 
 const ImageData = JSON.parse(fs.readFileSync('./images.json', 'utf-8'));
 
-router.post('/insertData', (req, res) => {
-    Image.insertMany(ImageData);
-    res.send('Insert data success');
+router.post('/insertData',(req,res)=>{
+    let listImage=[];
+    ImageData.forEach(function(item){
+        let itemToAddDB={
+            name: item.name,
+            fileImage: {
+                data: fs.readFileSync('./client/src/images/'+item.fileImage),
+                contentType: 'image/jpeg'
+            },
+            review: item.review
+        }
+        listImage.push(itemToAddDB);
+    })
+
+    Image.insertMany(listImage);
+    
+    res.send('insert data success');
 })
 
 router.get('/getData', async (req, res) => {
     let listImgData = await Image.find({});
-    res.json(listImgData);
+    let listItemToShow=[];
+    listImgData.forEach(function(item){
+        let itemToShow={
+            _id: item._id,
+            name: item.name,
+            fileImage:{
+                imgData: Buffer.from(item.fileImage.data).toString('base64'),
+                imgContentType: item.fileImage.contentType
+            },
+            review: item.review
+        }
+        listItemToShow.push(itemToShow);
+    })
+    res.json(listItemToShow);
 })
 
 router.delete('/removeAll', async (req, res) => {
@@ -59,7 +86,10 @@ router.post('/updateSpecifix/:id', upload.single('myImage'), async (req, res) =>
     if (req.file) {
         itemImage = {
             name: name,
-            fileImage: req.file.filename,
+            fileImage: {
+                data: fs.readFileSync('./client/src/images/'+req.file.filename),
+                contentType: 'images/jpeg'
+            },
             review: intro
         }
     } else {
@@ -77,7 +107,6 @@ router.post('/updateSpecifix/:id', upload.single('myImage'), async (req, res) =>
     }else {
         return res.send(false);
     }
-    
 })
 
 router.delete('/removeSpecifix/:id', async (req, res) => {
@@ -91,10 +120,12 @@ router.post('/createNew',upload.single('myImage'),async (req,res)=>{
     if (req.file && name != '' && intro != '') {
         let itemImage = {
             name: name,
-            fileImage: req.file.filename,
+            fileImage: {
+                data:fs.readFileSync('./client/src/images/'+req.file.filename),
+                contentType: 'images/jpeg'
+            },
             review: intro
         }
-
         await Image.create(itemImage);
         return res.send(true)
     } else {

@@ -40,7 +40,7 @@ function ImageView({ setImage, image }) {
         <main id="imageView">
             <section className={style.contentView}>
                 <div className={style.imageShow}>
-                    <img src={require(`../images/${image.fileImage}`)} alt="img"></img>
+                    <img src={`data:${image.fileImage.imgContentType};base64,${image.fileImage.imgData}`} alt="img"></img>
                     <div className={style.btns_controlView}>
                         <button id="back"><img src={require('../images/back.svg')} alt="back"></img></button>
                         <button id="close"><img src={require('../images/close.svg')} alt="close"></img></button>

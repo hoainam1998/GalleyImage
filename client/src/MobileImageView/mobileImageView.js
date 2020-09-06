@@ -34,7 +34,7 @@ function MobileView({ setImage, image }) {
     return (
         <section className={style.container}>
             <div className={style.view} >
-                <img src={require(`../images/${image.fileImage}`)} alt="img"></img>
+                <img src={`data:${image.fileImage.imgContentType};base64,${image.fileImage.imgData}`} alt="img"></img>
                 <div className={style.contentImage}>
                     <h1>Name: {image.name}</h1>
                     <p>{image.review}</p>
