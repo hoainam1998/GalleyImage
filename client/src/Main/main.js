@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './main.module.css';
 import $ from 'jquery';
+import axios from 'axios';
 import View from '../ImageView/imageView';
 import MobileView from '../MobileImageView/mobileImageView';
 
@@ -29,11 +30,15 @@ function Main() {
             });
         })
 
-        $.get('/api/getData', function (data) {
+        axios.get('/api/getData')
+        .then(function (data) {
             localStorage.setItem('images', JSON.stringify(data));
             setData(JSON.parse(localStorage.getItem('images')));
             setLoading(false);
-        });
+        })
+        .catch(function(){
+            alert('Something wrong');
+        })
 
         console.log('useEffect fetch data');
 
@@ -56,7 +61,7 @@ function Main() {
     }else if(listData.length===0){
         return (<h1>Haven't data...</h1>)
     }
-    
+
     return (
         <main className={style.contentMain}>
             <h1 className={style.myCollection}>My Collection Images</h1>
