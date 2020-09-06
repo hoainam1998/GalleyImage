@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './dashboard.module.css';
 import $ from 'jquery';
+import axios from 'axios';
 
 function Dashboard() {
     const [images, setImages] = useState([]);
@@ -30,10 +31,14 @@ function Dashboard() {
     }, [])
 
     useEffect(() => {
-        $.get('/api/getData', function (data) {
+        axios.get('/api/getData')
+        .then( function (data) {
             localStorage.setItem('images', JSON.stringify(data));
             setImages(JSON.parse(localStorage.getItem('images')));
             setLoading(false)
+        })
+        .catch(function(){
+            alert('loading data to dashboard fail');
         })
 
     }, [updateData])
