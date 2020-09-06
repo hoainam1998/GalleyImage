@@ -51,6 +51,9 @@ function Main() {
         return JSON.parse(localStorage.getItem('images')).find(item => item._id === id);
     }
 
+    if(listData.length===0){
+        return (<h1>Loading...</h1>)
+    }
     return (
         <main className={style.contentMain}>
             <h1 className={style.myCollection}>My Collection Images</h1>
