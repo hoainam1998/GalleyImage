@@ -32,14 +32,14 @@ function Dashboard() {
 
     useEffect(() => {
         axios.get('/api/getData')
-        .then( function (images) {
-            localStorage.setItem('images', JSON.stringify(images.data));
-            setImages(JSON.parse(localStorage.getItem('images')));
-            setLoading(false)
-        })
-        .catch(function(){
-            alert('loading data to dashboard fail');
-        })
+            .then(function (images) {
+                localStorage.setItem('images', JSON.stringify(images.data));
+                setImages(JSON.parse(localStorage.getItem('images')));
+                setLoading(false)
+            })
+            .catch(function () {
+                alert('loading data to dashboard fail');
+            })
 
     }, [updateData])
 
@@ -157,13 +157,12 @@ function Dashboard() {
     return (
         <section id="dashboard">
             <ul className={style.listItemImage}>
-                {images.map((item, index) => {
-                    return (<li key={index + 1} className={style.itemImage} data-id={item._id}>
+                {images.map((item, index) => (
+                    <li key={index + 1} className={style.itemImage} data-id={item._id}>
                         <img src={require(`../images/${item.fileImage}`)} alt="beach"></img>
                         <span className={style.imgName}>{item.name}</span>
                     </li>
-                    )
-                })}
+                ))}
             </ul>
             <div className={style.contentDashboard}>
                 {(renderView === true) ? <View item={item} /> : ''}

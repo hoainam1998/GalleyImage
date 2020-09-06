@@ -57,10 +57,8 @@ function Main() {
         return JSON.parse(localStorage.getItem('images')).find(item => item._id === id);
     }
 
-    if(listData===null){
+    if(listData.length===0){
         return (<h1>Loading...</h1>)
-    }else if(listData.length===0){
-        return (<h1>Haven't data...</h1>)
     }
 
     return (
@@ -69,9 +67,9 @@ function Main() {
             <p className={style.title}>Curabitur aliquet quam id dui posuere blandit.
             Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
             <ul className={style.listImages}>
-                {listData.map((item, index) => {
-                    return <li key={index + 1} data-id={item._id} className={`${style.itemImage} click`}><img src={require(`../images/${item.fileImage}`)} alt="img"></img></li>
-                })}
+                {listData.map((item, index) => (
+                    <li key={index + 1} data-id={item._id} className={`${style.itemImage} click`}><img src={require(`../images/${item.fileImage}`)} alt="img"></img></li>
+                ))}
             </ul>
             <button className={style.btn_option}><i className="fas fa-ellipsis-v"></i></button>
             <label className={style.switch}>
