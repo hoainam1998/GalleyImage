@@ -3,8 +3,10 @@ const app=express();
 const cors=require('cors');
 const mongoose=require('mongoose');
 const path=require('path');
+const bodyParser=require('body-parser');
 
 app.use(cors());
+app.use(bodyParser.json());
 
 const db=require('./config/connectDB').MongoURI;
 

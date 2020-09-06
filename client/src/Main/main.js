@@ -14,9 +14,8 @@ function Main() {
     useEffect(() => {
         axios.get('/api/getData')
         .then(function (images) {
-            // localStorage.setItem('images', JSON.stringify(images.data));
-            console.log(images.data)
-            setData(images.data);
+            localStorage.setItem('images', JSON.stringify(images.data));
+            setData(JSON.parse(localStorage.getItem('images')));
             setLoading(false);
         })
         .catch(function(){
@@ -29,10 +28,10 @@ function Main() {
 
     useEffect(() => {
         console.log('call use Effect');
-        // $(`.click`).click(function () {
-        //     let id = $(this).data('id');
-        //     setImage(getSpecificImage(id));
-        // })
+        $(`.click`).click(function () {
+            let id = $(this).data('id');
+            setImage(getSpecificImage(id));
+        })
 
         $('#darkmode').change(function () {
             if (this.checked) {

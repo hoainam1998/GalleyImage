@@ -33,8 +33,8 @@ function Dashboard() {
     useEffect(() => {
         axios.get('/api/getData')
             .then(function (images) {
-                // localStorage.setItem('images', JSON.stringify(images.data));
-                setImages(images.data);
+                localStorage.setItem('images', JSON.stringify(images.data));
+                setImages(JSON.parse(localStorage.getItem('images')));
                 setLoading(false)
             })
             .catch(function () {
@@ -44,13 +44,13 @@ function Dashboard() {
     }, [updateData])
 
     useEffect(() => {
-        // $(`.${style.itemImage}`).off('click').on('click', function () {
-        //     let id = $(this).data('id');
-        //     $(`.${style.activeItemImage}`).removeClass(`${style.activeItemImage}`);
-        //     $(this).addClass(`${style.activeItemImage}`);
-        //     setItem(searchSpecific(id));
-        //     console.log(id);
-        // })
+        $(`.${style.itemImage}`).off('click').on('click', function () {
+            let id = $(this).data('id');
+            $(`.${style.activeItemImage}`).removeClass(`${style.activeItemImage}`);
+            $(this).addClass(`${style.activeItemImage}`);
+            setItem(searchSpecific(id));
+            console.log(id);
+        })
 
         $(`.${style.itemImage}:first-child`).click();
     }, [loading])
