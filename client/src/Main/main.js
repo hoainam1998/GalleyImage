@@ -6,7 +6,7 @@ import MobileView from '../MobileImageView/mobileImageView';
 
 function Main() {
 
-    const [listData, setData] = useState([]);
+    const [listData, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [image, setImage] = useState(undefined)
 
@@ -51,9 +51,12 @@ function Main() {
         return JSON.parse(localStorage.getItem('images')).find(item => item._id === id);
     }
 
-    if(listData.length===0||listData===undefined){
+    if(listData===null){
         return (<h1>Loading...</h1>)
+    }else if(listData.length===0){
+        return (<h1>Haven't data...</h1>)
     }
+    
     return (
         <main className={style.contentMain}>
             <h1 className={style.myCollection}>My Collection Images</h1>
