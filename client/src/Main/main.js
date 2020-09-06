@@ -15,6 +15,7 @@ function Main() {
         axios.get('/api/getData')
         .then(function (images) {
             // localStorage.setItem('images', JSON.stringify(images.data));
+            console.log(images.data)
             setData(images.data);
             setLoading(false);
         })
